@@ -1,0 +1,14 @@
+{% extends "recipes/layout.html" %}
+{% block body %}
+    <h1>Recipes</h1>
+    <ul>
+        <li>Recipe name: {{recipe.name}}</li>
+        <li>Time: {{recipe.time}}</li>
+        <li>Servings: {{recipe.serving}}</li>
+        <li>Description: {{recipe.description}}</li>
+        <li>Direction: {{recipe.direction}}</li>
+        <li>Author: {{recipe.author}}</li>
+        <li>Date Created: {{recipe.date_created}}</li>
+    </ul>
+
+{% endblock %}
