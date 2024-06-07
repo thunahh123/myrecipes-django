@@ -1,14 +1,14 @@
 {% extends "recipes/layout.html" %}
 {% block body %}
-    <h1>Recipes</h1>
+    <h1>Recipe {{recipe.id}}</h1>
     <ul>
-        <li>Recipe name: {{recipe.name}}</li>
-        <li>Time: {{recipe.time}}</li>
-        <li>Servings: {{recipe.serving}}</li>
-        <li>Description: {{recipe.description}}</li>
-        <li>Direction: {{recipe.direction}}</li>
-        <li>Author: {{recipe.author}}</li>
-        <li>Date Created: {{recipe.date_created}}</li>
+        <li><strong>Recipe name:</strong> {{recipe.name}}</li>
+        <li><strong>Time:</strong> {{recipe.time}} mins</li>
+        <li><strong>Servings:</strong> {{recipe.servings}}</li>
+        <li><strong>Description:</strong> {{recipe.description}}</li>
+        <li><strong>Direction:</strong> {{recipe.direction}}</li>
+        <li><strong>Author:</strong> {{recipe.author}}</li>
+        <li><strong>Date Created:</strong> {{recipe.date_created}}</li>
     </ul>
 
 {% endblock %}

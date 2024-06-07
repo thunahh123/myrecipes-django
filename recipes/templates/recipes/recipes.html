@@ -1,0 +1,19 @@
+{% extends 'recipes/layout.html'%}
+{% block title %}
+    Recipes List
+{% endblock %}
+
+{% block body %}
+
+    <h1>Recipes List</h1>
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            <a href="{% url 'recipe' recipe.id %}">
+                Recipe{{recipe.id}} (Created:{{recipe.date_created}})
+            </a>
+        </li>
+        {% endfor%}
+    </ul>
+
+{% endblock %}

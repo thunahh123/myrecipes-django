@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Flights
+        {% block title %}
+        {% endblock %}
     </title>
+    
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+    <nav>
+        <a href="/recipes">📰 Recipes List</a> |
+        <a href="/recipes">➕🧾 Add New Recipe</a> |
+        <a href="/">🏠 Home</a> |
+        <a href="/about">😀 About</a> |
+    </nav>
+      <main>
+            {% block body %}
+            {% endblock %}
+      </main>
+   
 </body>
 </html>
