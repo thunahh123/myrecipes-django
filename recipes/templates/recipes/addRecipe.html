@@ -1,5 +1,40 @@
-{% extends 'recipes/layout.html' %}
-
+{% extends 'recipes/layout.html' %} 
 {% block body %}
+
+{% if message %}
+        <div>{{message}}</div>
+{% endif %}
+<div>
+    {% if user.is_authenticated %}
     <h1>This is Add Recipe Page</h1>
+    <form action="{% url 'add' %}" method="POST">
+    {% csrf_token %}
+    <label for="rname">Recipe name:</label><br />
+    <input type="text" id="rname" name="rname" required/><br />
+
+    <label for="servings">Servings:</label><br />
+    <input type="number" id="servings" name="servings" required/><br />
+
+
+    <label for="time">Time:</label><br />
+    <input type="number" id="time" name="time" required/><br />
+
+    <label for="desc">Description:</label><br />
+    <input type="text" id="desc" name="desc" required/><br />
+
+    <label for="dir">Direction:</label><br />
+    <input type="text" id="dir" name="dir" required/><br />
+
+    <input type="submit" value="Submit" >
+    </form>
+
+{% else %}
+
+    <p>Please log in to create a new recipe!</p>
+
+{% endif %}
+
+</div>
+
+
 {% endblock %}

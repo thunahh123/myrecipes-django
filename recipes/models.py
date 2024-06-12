@@ -1,4 +1,6 @@
 from django.db import models
+from users.models import User
+from django.forms import ModelForm
 
 # Create your models here.
 
@@ -8,15 +10,6 @@ class Ingredient(models.Model):
     def __str__(self):
         return f"{self.name}"
     
-class User(models.Model):
-    first = models.CharField(max_length=64)
-    last = models.CharField(max_length=64)
-    
-    date_created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self) :
-        return f"{self.first} {self.last}"
-
 
 class Recipe(models.Model):
     name = models.CharField(max_length=64)
@@ -29,3 +22,4 @@ class Recipe(models.Model):
 
     def __str__(self) :
         return f":{self.name}: {self.description} (Created by: {self.author}) "
+    
