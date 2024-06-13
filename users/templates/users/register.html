@@ -1,0 +1,27 @@
+{% extends 'users/layout.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+
+{% block body %}
+    {% if message %}
+        <div>{{message}}</div>
+    {% endif %}
+    <h2>Register</h2>
+    <form method="post">
+        {% comment %} 
+        {{ form.as_p }}
+        <button type="submit">Register</button> {% endcomment %}
+
+        {% csrf_token %}
+        <input type="text" name="newname" placeholder="Username">
+        <input type="text" name="newpassword" placeholder="Password">
+        <input type="text" name="confpassword" placeholder="Confirm Password">
+        <input type="submit" value="Register">
+    </form>
+{% endblock %} 
+
+
+

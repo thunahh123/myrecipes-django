@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,16 +8,20 @@
         {% block title %}
         {% endblock %}
     </title>
-    
+        <!-- Link your CSS file here -->
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}"> {% endcomment %}
+
 </head>
 <body>
     <nav>
-        <a href="/recipes">📰 Recipes List</a> |
-        <a href="/recipes/add">➕🧾 Add New Recipe</a> |
-        <a href="/">🏠 Home</a> |
-        <a href="/about">😀 About</a> |
-        <a href="/users">👤 User</a>
-    </nav>
+        <ul>
+          <li><a href="/recipes">📰 Recipes List</a> |</li>
+          <li> <a href="/recipes/add">➕🧾 Add Recipes</a> |</li>
+          <li><a href="/">🏠 Home</a> |</li>
+          <li><a href="/about">😀 About</a> |</li>
+          <li> <a href="/users">👤 User</a></li>
+        </ul>
+      </nav>
       <main>
             {% block body %}
             {% endblock %}

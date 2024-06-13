@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Recipe, User
-
+from .models import Recipe 
+#from users.models import CustomUser
 
 # Create your views here.
 def recipes(request):

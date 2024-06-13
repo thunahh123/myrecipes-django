@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from users.forms import CustomUserCreationForm
 
 from django.shortcuts import render
 
@@ -35,3 +36,15 @@ def logout_view(request):
     return render(request, "users/login.html",{
         "message": "Successfully logged out."
     })
+
+#register
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return HttpResponseRedirect("users")  
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'register.html', {'form': form})

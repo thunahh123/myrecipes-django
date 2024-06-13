@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgba(236, 227, 191, 0.726);
+    color: black;
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li a {
+    display: inline;
+}
+li {
+    float: left;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+li a:hover {
+    background-color: #d5bdaf;
+    border-radius: 20px;
+    color: whitesmoke;
+}
