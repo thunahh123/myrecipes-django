@@ -1,19 +1,24 @@
-{% extends 'recipes/layout.html'%}
-{% block title %}
-    Recipes List
+{% extends 'recipes/layout.html'%} 
+{% block title %} 
+Recipes List 
 {% endblock %}
-
 {% block body %}
 
-    <h1>Recipes List</h1>
-    <ul>
-        {% for recipe in recipes %}
-        <li>
-            <a href="{% url 'recipe' recipe.id %}">
-                Recipe{{recipe.id}} (Created:{{recipe.date_created}})
-            </a>
-        </li>
-        {% endfor%}
-    </ul>
+<h1>Recipes List</h1>
+<div class="recipes-container">
+  
+    {% for recipe in recipes %}
+    <div class="recipe-card">
+      <a href="{% url 'recipe' recipe.id %}">
+        <div>
+            <p class="recipe-name">{{recipe.name}}</p>
+            <p class="recipe-desc">{{recipe.description}}</p>
+            <p>(Created:{{recipe.date_created}})</p>
+        </div>
+      </a>
+    </div>
+    {% endfor%}
+  
+</div>
 
 {% endblock %}

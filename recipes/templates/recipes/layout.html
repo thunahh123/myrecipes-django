@@ -11,6 +11,10 @@
       type="text/css"
       href="{% static 'styles/style.css' %}"
     />
+    <link 
+    rel="stylesheet" 
+    type="text/css" 
+    href="{% static 'recipes/styles/style.css' %}" />
   </head>
   <body>
     <nav>
@@ -27,5 +31,10 @@
     </nav>
 
     <main>{% block body %} {% endblock %}</main>
+
+    <footer>
+      <p>Copyright &#169; <span id="date"></span> <a target="blank" href="https://thunahh123.github.io/emily-ng-site.github.io/">Emily Nguyen Development</a>, All Rights Reserved.</p>
+    </footer>
+    <script src="{% static 'js/script.js'%}"></script>
   </body>
 </html>

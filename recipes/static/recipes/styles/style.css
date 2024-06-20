@@ -1,0 +1,72 @@
+.add-box{
+    border: black 1.5px solid;
+    border-radius: 10px;
+    width: 50%;
+    height: auto;
+    text-align: center;
+    padding: 8px;
+    margin: 0 auto;
+    
+}
+
+input[type=number],
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.recipes-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 5rem;
+    flex-flow: row wrap; 
+    padding-top: 2rem;
+}
+  
+.recipe-card{
+    min-height: 250px;
+    min-width: 250px;
+    max-width: 280px;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 20px black;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 2rem;
+}
+
+.recipe-desc{
+    background-color: #000;
+    color: white;
+    /* test */
+    width: 300px;
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recipe-name{
+    background-color: rgb(224, 100, 120);
+    color: #000;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 0.3rem;
+}
+
+.recipe-card:hover{
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+    .recipe-name{
+        background-color: rgb(224, 100, 120);
+    }
+}

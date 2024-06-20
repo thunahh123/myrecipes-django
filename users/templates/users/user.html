@@ -1,15 +1,22 @@
-{% extends "users/layout.html" %}
-
-{% block title %}
-    User
-{% endblock %}
+{% extends "users/layout.html" %} {% load static %} 
+{% block title %} 
+User 
+{%endblock %} 
 {% block body %}
-        <h1>Welcome, {{ request.user.username}}</h1>
+<div class="welcome-box">
+    <h1>Welcome, {{ request.user.username}}</h1>
+    <ul>
+        <li>Username: {{ request.user.username }}</li>
+        <li>Email: {{ request.user.email }}</li>
+    </ul>
+    <input
+        class="btn log-out-btn"
+        type="button"
+        onclick="location.href='{% url 'logout'%}';"
+        value="Log out"
+    />
+</div>
 
-        <ul>
-            <li>Username: {{ request.user.username }}</li>
-            <li>Email: {{ request.user.email }}</li>
-        </ul>
+{% comment %} <a href="{% url 'logout'%}">Log out</a> {% endcomment %}
 
-        <a href="{% url 'logout'%}">Log out</a>
 {% endblock %}

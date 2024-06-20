@@ -6,14 +6,19 @@
 
 
 {% block body %}
+<div class="login-box">
+    
     {% if message %}
-        <div>{{message}}</div>
+        <div class="message">{{message}}</div>
     {% endif %}
-    <form action="{% url 'login' %}" method="post">
+    <form class="login-form"  action="{% url 'login' %}" method="post">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="password" placeholder="Password">
-        <input type="submit" value="Login">
+        <input type="text" name="username" placeholder="Username" required/>
+        <input type="text" name="password" placeholder="Password" required/>
+        <input class="btn" type="submit" value="Login">
+        <a href="">Create a new account</a>
         {% comment %} <a href="">Create a new account</a> {% endcomment %}
     </form>
+</div>
+    
 {% endblock %}
