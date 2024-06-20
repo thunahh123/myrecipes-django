@@ -18,14 +18,14 @@
   </head>
   <body>
     <nav>
-      <div class="logo">Emily's Recipes</div>
+      <div class="logo"><a href="/">Emily's Recipes</a></div>
       <div>
         <ul class="nav-links">
-          <li><a href="/recipes">📰 Recipes List</a> |</li>
-          <li><a href="/recipes/add">➕🧾 Add Recipes</a> |</li>
-          <li><a href="/">🏠 Home</a> |</li>
-          <li><a href="/about">😀 About</a> |</li>
-          <li><a href="/users">👤 User</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/recipes">Recipes List</a></li>
+          <li><a href="/recipes/add">Add Recipes</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/users">User</a></li>
         </ul>
       </div>
     </nav>
@@ -33,7 +33,7 @@
     <main>{% block body %} {% endblock %}</main>
 
     <footer>
-      <p>Copyright &#169; <span id="date"></span> <a target="blank" href="https://thunahh123.github.io/emily-ng-site.github.io/">Emily Nguyen Development</a>, All Rights Reserved.</p>
+      <p>Copyright &#169; <span id="date"></span> Designed and Developed by  <strong><a target="blank" href="https://thunahh123.github.io/emily-ng-site.github.io/">Emily Nguyen Development</a></strong></p>
     </footer>
     <script src="{% static 'js/script.js'%}"></script>
   </body>

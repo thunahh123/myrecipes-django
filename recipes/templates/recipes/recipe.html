@@ -1,5 +1,7 @@
 {% extends "recipes/layout.html" %}
+{% load static %}
 {% block body %}
+<div class="recipe">
     <h1>Recipe {{recipe.id}}</h1>
     <ul>
         <li><strong>Recipe name:</strong> {{recipe.name}}</li>
@@ -10,5 +12,7 @@
         <li><strong>Author:</strong> {{recipe.author}}</li>
         <li><strong>Date Created:</strong> {{recipe.date_created}}</li>
     </ul>
+</div>
+    
 
 {% endblock %}

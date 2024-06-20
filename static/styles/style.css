@@ -43,8 +43,8 @@ a {
 }
 
 nav a:hover {
-  text-decoration: underline;
   border-radius: 20px;
+  color: rgb(141, 116, 83);
   
 }
 
@@ -55,6 +55,7 @@ nav a:hover {
 
 .logo:hover{
     cursor: default;
+    
 }
 
 /* buttons */
@@ -115,10 +116,11 @@ footer{
   
 }
 
-footer a{
+footer a:hover{
   text-decoration: underline;
 }
 
 .login-text{
   color: #d43a26;
 }
+
