@@ -1,0 +1,24 @@
+/* @media screen and (max-width: 1200px) {
+    #desktop-nav{
+        display: none;
+
+    }
+    #hamburger-nav{
+        display: flex;
+        
+       margin-top: 0.75rem;
+       margin-bottom: 1.25rem;
+        
+        
+    }
+    .topnav a:not(:first-child) {
+        display: none;
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+    #myLinks {
+        display: flex;
+    }
+} */

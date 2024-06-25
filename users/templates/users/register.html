@@ -10,17 +10,11 @@
     {% if message %}
             <div class="message">{{message}}</div>
         {% endif %}
-        <h2>Register</h2>
+        <h2>Register new Account</h2>
         <form method="post">
-            {% comment %} 
-            {{ form.as_p }}
-            <button type="submit">Register</button> {% endcomment %}
-
             {% csrf_token %}
-            <input type="text" name="newname" placeholder="Username">
-            <input type="text" name="newpassword" placeholder="Password">
-            <input type="text" name="confpassword" placeholder="Confirm Password">
-            <input type="submit" value="Register">
+            {{ form.as_p }}
+            <button class="btn" type="submit">Register</button> 
         </form>
 </div>
     

@@ -124,3 +124,12 @@ footer a:hover{
   color: #d43a26;
 }
 
+/*  */
+
+.new-acc-link{
+  color: #d43a26;
+} 
+
+.new-acc-link:hover{
+  text-decoration: underline;
+}

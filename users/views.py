@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from users.forms import CustomUserCreationForm
+from users.forms import UserRegistrationForm
+from users.models import CustomUser
 
 from django.shortcuts import render
 
@@ -37,14 +38,29 @@ def logout_view(request):
         "message": "Successfully logged out."
     })
 
-#register
-def register(request):
+#signup new account
+def signup_view(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return HttpResponseRedirect("users")  
+            user = CustomUser.objects.create_user(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+                email=form.cleaned_data['email'],
+            )
+            return HttpResponseRedirect(reverse("users"))  # Redirect to a login page or home page
     else:
-        form = CustomUserCreationForm()
-    return render(request, 'register.html', {'form': form})
+        form = UserRegistrationForm()
+    return render(request, "users/register.html", {'form': form})
+
+#register
+# def register(request):
+#     if request.method == 'POST':
+#         form = CustomUserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return HttpResponseRedirect("users")  
+#     else:
+#         form = CustomUserCreationForm()
+#     return render(request, 'register.html', {'form': form})
