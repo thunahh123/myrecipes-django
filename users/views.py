@@ -48,19 +48,9 @@ def signup_view(request):
                 password=form.cleaned_data['password'],
                 email=form.cleaned_data['email'],
             )
-            return HttpResponseRedirect(reverse("users"))  # Redirect to a login page or home page
+            # Redirect to a login page or home page
+            return HttpResponseRedirect(reverse("users"))  
     else:
         form = UserRegistrationForm()
     return render(request, "users/register.html", {'form': form})
 
-#register
-# def register(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return HttpResponseRedirect("users")  
-#     else:
-#         form = CustomUserCreationForm()
-#     return render(request, 'register.html', {'form': form})

@@ -131,5 +131,6 @@ footer a:hover{
 } 
 
 .new-acc-link:hover{
+  color: #000;
   text-decoration: underline;
 }
