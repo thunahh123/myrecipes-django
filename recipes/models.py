@@ -6,7 +6,7 @@ from users.models import CustomUser
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=40)
-
+    date_created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.name}"
     
@@ -24,10 +24,12 @@ class Recipe(models.Model):
     def __str__(self) :
         return f":{self.name}: {self.description} (Created by: {self.author}) "
     
-class Ingredient(models.Model):
-    name = models.CharField(max_length=40)
-    recipes =  models.ManyToManyField(Recipe, blank=True, related_name="ingredients")
+class IngredientRecipe(models.Model):
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    # recipes =  models.ManyToManyField(Recipe, blank=True, related_name="ingredients")
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    def __str__(self):
-        return f"{self.name}"
+    # def __str__(self):
+    #     return f"{self.name}"
+

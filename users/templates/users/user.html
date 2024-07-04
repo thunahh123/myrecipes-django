@@ -14,10 +14,9 @@
   />
 </div>
 {% if user.is_superuser%}
-<p>You are a superuser!</p>
+<p>You are admin</p>
 <div>
   <a href="{% url 'recipes:addIng' %}">Click here to add new ingredient</a>
 </div>
-{% else %}
-<p>You are not a superuser.</p>
+
 {% endif %} {% endblock %}
