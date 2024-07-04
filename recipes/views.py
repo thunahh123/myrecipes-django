@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Recipe 
+from .models import Recipe, Ingredient
 #from users.models import CustomUser
 
 # Create your views here.
@@ -47,3 +47,32 @@ def addRecipe(request):
     else:
         # Render the form to add a new recipe
         return render(request, "recipes/addRecipe.html")
+
+
+
+#add ingredients
+def addIng(request):
+    if request.method == 'POST':
+        name = request.POST.get('iname')
+        try:
+            if Ingredient.objects.filter(name=name).exists():
+                return render(request, "recipes/addIngredient.html",{
+                "message": "Ingredient already exists!"
+                })
+            else:
+                new_ingredient = Ingredient.objects.create(name=name)
+
+                print(f"New ingredient created: {new_ingredient}")
+
+                return render(request, "recipes/addIngredient.html",{
+                    "message": "Successfully added a new ingredient!"
+                })
+        except Exception as e:
+            print(f"Error: {e}")
+            return render(request, "recipes/addIngredient.html", {
+                "message": f"An error occurred: {str(e)}"
+            })       
+    
+    else:
+        # Render the form to add a new recipe
+        return render(request, "recipes/addIngredient.html")

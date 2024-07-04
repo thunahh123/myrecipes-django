@@ -6,7 +6,7 @@ from users.models import CustomUser
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=40)
-
+    date_created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.name}"
     

@@ -1,0 +1,21 @@
+{% extends 'recipes/layout.html' %} {% block body %}
+
+<div class="add-box">
+  {% if message %}
+  <div>{{message}}</div>
+  {% endif %}
+  <h1>Add New Ingredient</h1>
+  <form action="{% url 'recipes:addIng' %}" method="POST">
+    {% csrf_token %}
+    <input
+      type="text"
+      id="iname"
+      name="iname"
+      required
+      placeholder="Ingredient name"
+    /><br />
+    <input class="btn" type="submit" value="Submit" />
+  </form>
+</div>
+
+{% endblock %}
