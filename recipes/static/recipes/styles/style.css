@@ -75,3 +75,19 @@ input[type=text], select {
 .recipe li{
     list-style-type: none;
 }
+
+/* comments */
+.comments-container{
+    border: #000 1px solid;
+    
+}
+
+.comments-container > * {
+    margin: 4px;
+}
+
+.comment-card{
+    border: red 2px solid;
+    display: flex;
+    gap: 2px;
+}

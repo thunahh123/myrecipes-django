@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from .models import Recipe, Ingredient
-#from users.models import CustomUser
+from django.shortcuts import render, redirect, reverse
+from .models import Recipe, Ingredient, Comment
+from users.models import CustomUser
 
 # Create your views here.
 def recipes(request):
@@ -8,10 +8,13 @@ def recipes(request):
         "recipes": Recipe.objects.all()
     })
 
+# get recipe page and comments on the recipe
 def singleRecipe(request, recipe_id):
     recipe = Recipe.objects.get(pk=recipe_id)
+    
     return render(request, 'recipes/recipe.html',{
-        'recipe': recipe
+        'recipe': recipe,
+        'comments': recipe.comments.all()
     })
 
 
@@ -76,3 +79,32 @@ def addIng(request):
     else:
         # Render the form to add a new recipe
         return render(request, "recipes/addIngredient.html")
+
+#add new comment
+def addCmt(request, recipe_id):
+    if request.method == "POST":
+        content = request.POST.get('new-comment')
+        recipe = Recipe.objects.get(pk=recipe_id)
+        try:
+            
+            newComment = Comment.objects.create(
+                parent_id=None,
+                author= request.user,
+                recipe= recipe,
+                content = content
+            )
+            
+            return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe.id}))
+        except Exception as e:
+            print(f"Error: {e}")
+            return render(request, "recipes/recipe.html", {
+                "recipe": recipe,
+                "comments": recipe.comments.all(),
+                "message": f"An error occurred: {str(e)}"
+            })    
+    else:
+        return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe.id}))
+
+#add a reply
+
+#delete a comment

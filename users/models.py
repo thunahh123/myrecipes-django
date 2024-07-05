@@ -40,7 +40,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
     def get_full_name(self):
-        return self.username 
+        return f'{self.first} {self.last}' 
     def get_short_name(self):
         return self.first or self.username
     def __str__(self):

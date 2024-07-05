@@ -18,21 +18,13 @@ class Recipe(models.Model):
     description = models.TextField()
     direction = models.TextField()
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="recipes", null=True)
+    ingredients = models.ManyToManyField(Ingredient, related_name="ingredients")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     is_featured = models.BooleanField(default=False)
     def __str__(self) :
         return f":{self.name}: {self.description} (Created by: {self.author}) "
     
-class IngredientRecipe(models.Model):
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    # recipes =  models.ManyToManyField(Recipe, blank=True, related_name="ingredients")
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-    # def __str__(self):
-    #     return f"{self.name}"
-
 class Unit(models.Model):
     unit = models.CharField(max_length=40)
     abbr = models.CharField(max_length=25, null=True)
@@ -46,7 +38,7 @@ class Comment(models.Model):
     parent_id = models.ForeignKey('self', on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="comments", null=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="comments")
-    comment = models.TextField()
+    content = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 

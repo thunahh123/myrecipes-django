@@ -1,18 +1,43 @@
-{% extends "recipes/layout.html" %}
-{% load static %}
-{% block body %}
-<div class="recipe">
-    <h1>Recipe {{recipe.id}}</h1>
-    <ul>
-        <li><strong>Recipe name:</strong> {{recipe.name}}</li>
-        <li><strong>Time:</strong> {{recipe.time}} mins</li>
-        <li><strong>Servings:</strong> {{recipe.servings}}</li>
-        <li><strong>Description:</strong> {{recipe.description}}</li>
-        <li><strong>Direction:</strong> {{recipe.direction}}</li>
-        <li><strong>Author:</strong> {{recipe.author}}</li>
-        <li><strong>Date Created:</strong> {{recipe.date_created}}</li>
-    </ul>
-</div>
-    
+{% extends "recipes/layout.html" %} {% load static %} {% block body %}
+<section class="recipe">
+  <h1>Recipe {{recipe.id}}</h1>
+  <ul>
+    <li><strong>Recipe name:</strong> {{recipe.name}}</li>
+    <li><strong>Time:</strong> {{recipe.time}} mins</li>
+    <li><strong>Servings:</strong> {{recipe.servings}}</li>
+    <li><strong>Description:</strong> {{recipe.description}}</li>
+    <li><strong>Direction:</strong> {{recipe.direction}}</li>
+    <li><strong>Author:</strong> {{recipe.author.get_full_name}}</li>
+    <li><strong>Date Created:</strong> {{recipe.date_created}}</li>
+  </ul>
+</section>
+<section class="comments-container">
+    <h3>Comments</h3>
+    {% if message %}
+        <div>{{message}}</div>
+    {% endif %} 
+  {% if user.is_authenticated %}
+  
+  <form action="{% url "recipes:addCmt" recipe_id=recipe.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="recipe_id" value={{recipe.id}}>
+    <textarea name="new-comment" placeholder="What do you think about this recipe?" required></textarea>
+    <input class="btn" type="submit" value="Post">
+  </form>
+  {% for comment in comments %}
+  <div class="comment-card">
+    <p>{{comment.content}} by {{comment.author.get_full_name}}</p>
+    <button class="btn">Delete</button>
+    <button class="btn">Reply</button>
+  </div>
+  {% endfor %} 
+  {% else %}
+  <div>Please log in to see and write some comments on this recipe.</div>
+  {% endif %}
+</section>
+<section class="recommend">
+
+
+</section>
 
 {% endblock %}
