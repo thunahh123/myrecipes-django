@@ -27,8 +27,11 @@
   {% for comment in comments %}
   <div class="comment-card">
     <p>{{comment.content}} by {{comment.author.get_full_name}}</p>
-    <button class="btn">Delete</button>
-    <button class="btn">Reply</button>
+    <form action="{% url 'recipes:delCmt' comment_id=comment.id recipe_id=recipe.id %}" method="POST">
+      {% csrf_token %}
+      <button class="btn" onclick="return confirm('Are you sure you want to delete this comment?');">Delete</button>
+    </form>
+    <button class="btn" type="submit" >Reply</button>
   </div>
   {% endfor %} 
   {% else %}

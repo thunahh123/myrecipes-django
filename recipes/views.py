@@ -11,10 +11,11 @@ def recipes(request):
 # get recipe page and comments on the recipe
 def singleRecipe(request, recipe_id):
     recipe = Recipe.objects.get(pk=recipe_id)
-    
+    comments = Comment.objects.filter(recipe=recipe)
     return render(request, 'recipes/recipe.html',{
         'recipe': recipe,
-        'comments': recipe.comments.all()
+        'comments': comments,
+        'recipe_id': recipe_id,
     })
 
 
@@ -108,3 +109,18 @@ def addCmt(request, recipe_id):
 #add a reply
 
 #delete a comment
+def deleteCmt(request, comment_id, recipe_id):
+    if request.method == "POST":
+        try:
+            comment = Comment.objects.get(pk=comment_id)
+            comment.delete()
+            return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe_id}))
+        except Exception as e:
+            print(f"Error: {e}")
+            return render(request, "recipes/recipe.html", {
+                "message": f"An error occurred: {str(e)}",
+                "recipe_id": recipe_id
+            })    
+    else:
+        return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe_id}))
+
