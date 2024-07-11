@@ -11,11 +11,13 @@
     <li><strong>Date Created:</strong> {{recipe.date_created}}</li>
   </ul>
 </section>
+
 <section class="comments-container">
     <h3>Comments</h3>
     {% if message %}
         <div>{{message}}</div>
     {% endif %} 
+
   {% if user.is_authenticated %}
   
   <form action="{% url "recipes:addCmt" recipe_id=recipe.id %}" method="POST">
@@ -24,7 +26,11 @@
     <textarea name="new-comment" placeholder="What do you think about this recipe?" required></textarea>
     <input class="btn" type="submit" value="Post">
   </form>
+
+  {% comment %} Show comments to the page {% endcomment %}
+
   {% for comment in comments %}
+  
   <div class="comment-card">
     <p>{{comment.content}} by {{comment.author.get_full_name}}</p>
     <form action="{% url 'recipes:delCmt' comment_id=comment.id recipe_id=recipe.id %}" method="POST">
@@ -34,13 +40,22 @@
     <button class="btn" type="submit" >Reply</button>
   </div>
   {% endfor %} 
+
+  <div id="comments"></div>
+
+  {% comment %} <script src="{% static 'react/babel.min.js' %}"></script>
+  <script src="{% static 'react/react.development.js' %}"></script>
+  <script src="{% static 'react/react-dom.development.js' %}"></script>
+   {% endcomment %}
   {% else %}
   <div>Please <a class="login-text" href="/users">log in</a> to view and write some comments on this recipe.</div>
+ 
   {% endif %}
 </section>
-<section class="recommend">
 
 
-</section>
+<section class="recommend"></section>
+
+
 
 {% endblock %}
