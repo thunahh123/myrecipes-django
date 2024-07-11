@@ -107,27 +107,27 @@ def addCmt(request, recipe_id):
         return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe.id}))
 
 #add a reply
-def addReply(request, recipe_id, parent_cmt_id):
-    if request.method == "POST":
-        content = request.POST.get('new-comment')
-        recipe = Recipe.objects.get(pk=recipe_id)
-        try:
-            newReply = Comment.objects.create(
-                parent_id=parent_cmt_id,
-                author= request.user,
-                recipe= recipe,
-                content = content
-            )
-            return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe.id}))
-        except Exception as e:
-            print(f"Error: {e}")
-            return render(request, "recipes/recipe.html", {
-                "recipe": recipe,
-                "comments": recipe.comments.all(),
-                "message": f"An error occurred: {str(e)}"
-            })    
-    else:
-        return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe.id}))
+# def addReply(request, recipe_id, parent_cmt_id):
+#     if request.method == "POST":
+#         content = request.POST.get('new-comment')
+#         recipe = Recipe.objects.get(pk=recipe_id)
+#         try:
+#             newReply = Comment.objects.create(
+#                 parent_id=parent_cmt_id,
+#                 author= request.user,
+#                 recipe= recipe,
+#                 content = content
+#             )
+#             return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe.id}))
+#         except Exception as e:
+#             print(f"Error: {e}")
+#             return render(request, "recipes/recipe.html", {
+#                 "recipe": recipe,
+#                 "comments": recipe.comments.all(),
+#                 "message": f"An error occurred: {str(e)}"
+#             })    
+#     else:
+#         return redirect(reverse('recipes:recipe', kwargs={'recipe_id': recipe.id}))
         
             
 
